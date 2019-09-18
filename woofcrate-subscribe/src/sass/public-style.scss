@@ -1,0 +1,423 @@
+/*! Please edit the scss files not the minified one */
+
+@import 'vars';
+@import 'extends';
+@import 'jquery.steps';
+
+#woSuWrap {
+	background-color: #FFF;
+	width: 100%;
+	padding: 0 0 2rem;
+}
+
+#woSuStep {
+	background-color: $selected;
+	width: 0;
+	height: 4px;
+	position: fixed;
+	z-index: 1;
+}
+
+#woSu {
+	font-family: Roboto, sans-serif;
+	font-size: 2rem;
+	position: relative;
+	/* -webkit-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.75);
+	box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.75); */
+
+	.steps {
+		display: none;
+	}
+
+	.sections {
+		min-height: 50rem;
+
+		h3 {
+			font-family: 'Baloo Paaji', sans-serif;
+			font-size: 4.2rem;
+			margin-bottom: 4rem;
+		}
+
+		.series {
+			@extend %display-flex;
+			@extend %justify-center;
+			@extend %flex-wrap;
+
+			.boxes {
+				padding: 8px;
+				@include flex(0, 0, 50%);
+				max-width: 50%;
+
+				@include viewport-min-width(768px) {
+					padding: 15px;
+				}
+
+				&.full-width {
+					@include flex(0, 0, 100%);
+					max-width: 100%;
+
+					@include viewport-min-width(768px) {
+						@include flex(0, 0, 50%);
+						max-width: 50%;
+					}
+				}
+
+				> div {
+					height: 100%;
+					cursor: pointer;
+
+					&:not(.no-border) {
+						border: thin solid $unselect;
+					}
+
+					&.smaller-content {
+						width: 100%;
+
+						@include viewport-min-width(768px) {
+							width: 50%;
+						}
+					}
+
+					h4 {
+						background-color: $unselect;
+						margin-bottom: 2rem;
+						padding: 1rem 0.5rem;
+					}
+
+					figure {
+						padding: 0 1rem 1rem;
+
+						&:not(.not-animate) {
+							img {
+								transition-duration: 0.3s;
+								transition-property: transform;
+							}
+						}
+
+						figcaption {
+							font-size: 80%;
+						}
+					}
+				}
+
+				&:hover,
+				&.selected {
+					> div:not(.no-border) {
+						border-color: $selected;
+
+						h4 {
+							color: #FFF;
+							background-color: $selected;
+						}
+					}
+				}
+
+				&:hover {
+					> div {
+						figure:not(.not-animate) {
+							img {
+								transform: scale(1.1);
+							}
+						}
+					}
+				}
+			}
+
+			&.of-3 {
+				.boxes {
+					@include viewport-min-width(768px) {
+						@include flex(0, 0, 33.3333%);
+						max-width: 33.3333%;
+					}
+				}
+			}
+
+			&.of-4 {
+				.boxes {
+					@include viewport-min-width(768px) {
+						@include flex(0, 0, 25%);
+						max-width: 25%;
+					}
+				}
+			}
+		}
+
+		.separator-wrapper {
+			width: 50%;
+			padding: 11px 0;
+
+			.separator {
+				display: inline-block;
+				width: 100%;
+				border-top: 10px dotted #23A455;
+			}
+		}
+
+		.choices {
+			a {
+				@extend %a-button;
+
+				margin: 1rem;
+
+				@include viewport-min-width(576px) {
+					margin: 0 1rem;
+				}
+			}
+
+			&#subsGift {
+				a {
+					background-color: $selected;
+
+					&#gotoSub {
+						background-color: $green;
+					}
+
+					&:hover,
+					&#gotoSub:hover {
+						background-color: $hover;
+					}
+				}
+			}
+		}
+
+		.desc-wrapper {
+			margin-top: 2rem;
+		}
+
+		.section-desc {
+			font-size: 80%;
+			font-weight: bold;
+			color: $selected;
+			margin-top: -2rem;
+			margin-bottom: 2rem;
+		}
+
+		.section-err {
+			font-size: 80%;
+			color: #A00;
+			margin-bottom: 0;
+		}
+
+		.section-img {
+			width: 150px;
+		}
+
+		> nav {
+			@extend %display-flex;
+			@extend %justify-between;
+
+			width: 100%;
+			padding: 2.5% 5%;
+			position: absolute;
+			top: auto;
+			bottom: 0;
+			left: 0;
+
+			@include viewport-min-width(768px) {
+				top: 0;
+				bottom: auto;
+			}
+
+			> button {
+				@extend %a-button;
+
+				background-color: $selected;
+
+				.fas {
+					font-size: 125%;
+					line-height: 1;
+
+					@include viewport-min-width(576px) {
+						font-size: 150%;
+					}
+				}
+			}
+		}
+
+		.checkbox {
+			font-size: 300%;
+			line-height: 1;
+
+			.far {
+				cursor: pointer;
+			}
+
+			.fa-circle {
+				color: $unselect;
+			}
+
+			.fa-check-circle {
+				color: $selected;
+			}
+		}
+
+		&.wosu-header {
+			padding: 7.5% 7.5% 2.5%;
+
+			.description {
+				margin: 2rem 2rem 4rem;
+			}
+		}
+
+		&.wosu-footer {
+			.series {
+				h4 {
+					font-family: 'Baloo Paaji', sans-serif;
+				}
+
+				p {
+					font-weight: bold;
+					margin-bottom: 0;
+
+					> span {
+						font-weight: normal;
+					}
+				}
+			}
+		}
+	}
+
+	.inputs-group {
+		width: 90%;
+
+		@include viewport-min-width(576px) {
+			width: 340px;
+			max-width: 100%;
+		}
+
+		.input,
+		.input-radio {
+			&:not(:last-child) {
+				margin-bottom: 3rem;
+			}
+
+			label {
+				font-size: inherit;
+			}
+		}
+
+		.input {
+			input[type="text"],
+			input[type="date"],
+			textarea {
+				font-family: inherit;
+				font-size: 1.6rem;
+				text-align: center;
+				padding: 0 1.6rem;
+				border-radius: 16px;
+			}
+
+			input[type="date"] {
+				text-align: left;
+				padding-left: 34%;
+			}
+
+			textarea {
+				text-align: left;
+				resize: none;
+				padding: 1.6rem;
+			}
+		}
+
+		.input-radio {
+			.input-radio-item {
+				display: inline-block;
+				margin: 0 2rem;
+				position: relative;
+
+				label {
+					font-size: 80%;
+					font-weight: normal;
+					cursor: pointer;
+
+					&::before {
+						font-family: 'Font Awesome 5 Free';
+						font-size: 5rem;
+						font-weight: bold;
+						line-height: 1;
+						display: block;
+					}
+
+					&[for="dgMale"]::before {
+						content: '\f222';
+					}
+
+					&[for="dgFemale"]::before {
+						content: '\f221';
+					}
+				}
+
+				input {
+					position: absolute;
+					top: 0;
+					opacity: 0;
+
+					+ label::before {
+						color: $unselect;
+					}
+
+					&:checked + label[for="dgMale"]::before {
+						color: $cyan;
+					}
+
+					&:checked + label[for="dgFemale"]::before {
+						color: $pink;
+					}
+				}
+			}
+		}
+	}
+
+	.summary {
+		text-align: left;
+		width: auto;
+		margin: 0 auto !important;
+
+		@include viewport-min-width(576px) {
+			width: 60%;
+		}
+
+		.summary-item {
+			margin: 0.5rem 0;
+		}
+
+		.summary-label {
+			font-size: 80%;
+			text-transform: uppercase
+		}
+
+		.summary-field {
+			font-weight: bold;
+			display: inline-block;
+			margin-left: 1em;
+
+			&.long-text {
+				font-size: 90%;
+				font-weight: normal;
+				line-height: 1;
+			}
+		}
+
+		.fa-edit {
+			color: $selected;
+			float: right;
+			cursor: pointer;
+		}
+	}
+
+	.hidden {
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	.margin-center {
+		margin: 0 auto;
+	}
+
+	.more-pad-bot {
+		@include viewport-max-width(575px) {
+			padding-bottom: 15%;
+		}
+	}
+}

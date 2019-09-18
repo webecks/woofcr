@@ -1,0 +1,25 @@
+$selected: #B52222;
+$unselect: #E5E5E5;
+$green: #58B774;
+$pink: #DD9A9A;
+$cyan: #6CCDD9;
+$hover: #54595F;
+
+@mixin viewport-min-width($width) {
+	@media only screen and (min-width: $width) {
+		@content;
+	}
+}
+
+@mixin viewport-max-width($width) {
+	@media only screen and (max-width: $width) {
+		@content;
+	}
+}
+
+@mixin flex($grow, $shrink, $basis) {
+	-webkit-box-flex: $grow;
+	-webkit-flex: $grow $shrink $basis;
+	-ms-flex: $grow $shrink $basis;
+	flex: $grow $shrink $basis;
+}

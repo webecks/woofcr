@@ -1,0 +1,244 @@
+.wizard,
+.tabcontrol {
+	/* Common */
+	display: block;
+	width: 100%;
+	max-width: 1024px;
+	margin: 0 auto;
+	overflow: hidden;
+
+	a {
+		outline: 0;
+	}
+
+	ul {
+		list-style: none inside none;
+		padding: 0;
+		margin: 0;
+
+		> li {
+			display: block;
+			padding: 0;
+		}
+	}
+
+	/* Accessibility */
+	> .steps .current-info,
+	> .content > .title {
+		position: absolute;
+		left: -999em;
+	}
+}
+
+/* Wizard */
+.wizard {
+	> .steps {
+		position: relative;
+		display: block;
+		width: 100%;
+
+		.number {
+			font-size: 1.429em;
+		}
+
+		> ul {
+			@extend %display-flex;
+			@extend %flex-wrap;
+
+			> li {
+				width: 25%;
+			}
+		}
+
+		a {
+			display: block;
+			width: auto;
+			margin: 0 0.5em 0.5em;
+			padding: 1em 1em;
+			text-decoration: none;
+			border-radius: 5px;
+		}
+
+		.disabled {
+			a {
+				background: #EEE;
+				color: #AAA;
+				cursor: default;
+			}
+		}
+
+		.current {
+			a {
+				background: #2184BE;
+				color: #FFF;
+				cursor: default;
+			}
+		}
+
+		.done {
+			a {
+				background: #9DC8E2;
+				color: #FFF;
+			}
+		}
+
+		.error {
+			a {
+				background: #FF3111;
+				color: #FFF;
+			}
+		}
+	}
+
+	> .actions {
+		display: block;
+		width: 100%;
+
+		> ul {
+			@extend %display-flex;
+			@extend %justify-between;
+
+			> li {
+				margin: 0 0.5em;
+				float: left;
+			}
+		}
+
+		a {
+			@extend %a-button;
+		}
+
+		.disabled {
+			a {
+				background: #EEE;
+				color: #AAA;
+			}
+		}
+	}
+
+	> .content {
+		background-color: #FFF;
+		display: block;
+		padding: 0;
+		overflow: hidden;
+		position: relative;
+		width: auto;
+
+		> .body {
+			width: 100%;
+			padding: 2.5%;
+			position: relative;
+		}
+	}
+
+	/* &.vertical {
+		> .steps {
+			display: inline;
+			float: left;
+			width: 30%;
+
+			> ul {
+				> li {
+					margin: 0 0 0 1em;
+					width: 100%;
+					float: none;
+				}
+			}
+		}
+
+		> .content {
+			display: inline;
+			float: left;
+			margin: 0 2.5% 0.5em 2.5%;
+			width: 65%;
+		}
+
+		> .actions {
+			display: inline;
+			float: right;
+			margin: 0 2.5%;
+			width: 95%;
+		}
+	} */
+}
+
+/* Tabcontrol */
+.tabcontrol {
+	> .steps {
+		position: relative;
+		display: block;
+		width: 100%;
+
+		> ul {
+			position: relative;
+			margin: 6px 0 0 0;
+			top: 1px;
+			z-index: 1;
+
+			> li {
+				float: left;
+				margin: 5px 2px 0 0;
+				padding: 1px;
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+
+				&:hover {
+					background: #EDECEC;
+					border: thin solid #BBB;
+					padding: 0;
+				}
+
+				&.current {
+					background: #FFF;
+					border: 1px solid #BBB;
+					border-bottom: 0 none;
+					padding: 0 0 1px 0;
+					margin-top: 0;
+
+					> a {
+						padding: 15px 30px 10px;
+					}
+				}
+
+				> a {
+					color: #5F5F5F;
+					display: inline-block;
+					border: 0 none;
+					margin: 0;
+					padding: 10px 30px;
+					text-decoration: none;
+
+					&:hover {
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+
+	> .content {
+		position: relative;
+		display: inline-block;
+		width: 100%;
+		height: 35em;
+		overflow: hidden;
+		border-top: thin solid #BBB;
+		padding-top: 20px;
+
+		> .body {
+			float: left;
+			position: absolute;
+			width: 95%;
+			height: 95%;
+			padding: 2.5%;
+
+			ul {
+				list-style-type: disc !important;
+
+				> li {
+					display: list-item;
+				}
+			}
+		}
+	}
+}
